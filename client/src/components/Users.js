@@ -16,12 +16,11 @@ export default class Users extends Component {
      })
   }
   render() {
-     console.log(this.state.data)
+     
     return (
       <div style={{display:'flex', flexWrap:'wrap'}}>
-        {this.state.data.map( (user,index) => {
-            return <User user={user} key={index} />
-        })}
+        {this.state.data.map( (user,index) => (<User user={user} key={index} />)
+        )}
       </div>
     )
   }

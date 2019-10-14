@@ -5,16 +5,16 @@ import Users from './components/Users'
 import './App.css';
 
 function App() {
-  const [users, setUsers] = useLocalStorage('data')
+  const [users, setUsers] = useLocalStorage('data', {})
 
    useEffect(() => {
       axios.get(`http://localhost:5000/api/players`)
            .then( response => {
-              console.log(response.data);
+              
               setUsers(response.data)
            })
            .catch(error => {
-              console.log(error);
+              
            })
    },[]) 
   return (
