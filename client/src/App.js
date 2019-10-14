@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import {useLocalStorage} from './utils/Input';
+import Users from './components/Users'
 import './App.css';
 
 function App() {
@@ -19,7 +20,7 @@ function App() {
   return (
     <div className="App">
       <h1>Advanced React Sprint Challenge</h1>
-      
+      <Users users={users}/>
     </div>
   );
 }
