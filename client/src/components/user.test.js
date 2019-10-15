@@ -10,7 +10,7 @@ describe('Testing user component', () => {
       test('It should test and run h2 element for user name', async () => {
          const wrapper  = await rtl.render(<User />)
          const name = wrapper.queryByText(/Name:/i);
-         expect(name).toBeDefined() 
+         expect(name).toBeDefined()        
          
       })
 
@@ -18,6 +18,7 @@ describe('Testing user component', () => {
          const wrapper  = await rtl.render(<User />)
          const country = wrapper.queryByText(/country:/i);
          expect(country).toBeDefined()  
+         // expect(country).not.toBeEmpty()
       })
 
       test('It should test and run h2 element for user country', async () => {
