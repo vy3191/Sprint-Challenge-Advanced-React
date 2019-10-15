@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import {useLocalStorage} from '../utils/Input';
 import User from './User';
+import { isArray } from 'util';
 
 
 export default class Users extends Component {
@@ -16,10 +16,16 @@ export default class Users extends Component {
      })
   }
   render() {
+     const data = this.state.data;
+     console.log(data);
+     if(data.length === 0) {
+         return <h1>Loading...</h1>;
+     }
      
     return (
       <div style={{display:'flex', flexWrap:'wrap'}}>
-        {this.state.data.map( (user,index) => (<User user={user} key={index} />)
+        { 
+         Array.isArray(data) && data.map( (user,index) => (<User user={user} key={index} />)
         )}
       </div>
     )

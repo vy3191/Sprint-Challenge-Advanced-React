@@ -6,10 +6,10 @@ import User from './User';
 
 afterEach(rtl.cleanup);
 
-test('Render the app', () => {
-   const wrapper  = rtl.render(<User />)
-   const name = wrapper.getByTestId('user-name');
-   expect(element).toBeDefined();
+test('Render the app', async () => {
+   const wrapper  = await rtl.render(<User />)
+   const name = wrapper.queryByText(/Name:/i);
+   expect(name).toBeDefined()
   
 });
 

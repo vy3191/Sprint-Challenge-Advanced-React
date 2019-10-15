@@ -5,18 +5,26 @@ import Users from './components/Users'
 import './App.css';
 
 function App() {
-  const [users, setUsers] = useLocalStorage('data', {})
+  const [users, setUsers] = useLocalStorage('data', {});
+  const url = 'http://localhost:5000/api/players';
 
    useEffect(() => {
-      axios.get(`http://localhost:5000/api/players`)
-           .then( response => {
-              
+      const abortController = new AbortController(); 
+      fetch(url, { signal: abortController.signal})
+           .then ( response => response.JSON())
+           .then( response => {              
               setUsers(response.data)
            })
            .catch(error => {
               
            })
-   },[]) 
+
+           return () => {
+            abortController.abort();
+          };
+
+   },[url]);
+
   return (
     <div className="App">
       <h1>Advanced React Sprint Challenge</h1>

@@ -6,8 +6,12 @@ import App from './App';
 
 afterEach(rtl.cleanup);
 
-it('renders without crashing', () => {	
- const wrapper = rtl.render(<App />)
+
+
+
+
+it('renders without crashing', async () => {	
+ const wrapper = await rtl.render(<App />)
    const element = wrapper.getByText(/Advanced React Sprint Challenge/i)
   expect(element).toBeVisible()
 });
