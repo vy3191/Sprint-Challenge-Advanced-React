@@ -1,9 +1,18 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './App';
+import * as rtl from '@testing-library/react';
+import '@testing-library/jest-dom/extend-expect';
+import App from './App';	
+import Users from './components/Users';
 
-it('renders without crashing', () => {
-  const div = document.createElement('div');
-  ReactDOM.render(<App />, div);
-  ReactDOM.unmountComponentAtNode(div);
-});
+afterEach(rtl.cleanup);
+
+
+describe('It should render the App component without crushing', () => {
+    test('renders without crashing', async () => {	
+        const wrapper = await rtl.render(<App />)
+        const element = wrapper.getByText(/Advanced React Sprint Challenge/i)
+        expect(element).toBeDefined(); 
+        expect(element).toBeVisible();
+    })    
+
+})
